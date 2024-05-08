@@ -102,6 +102,6 @@ function turbineYield()
 {
     //in the case of javascript, place a post request to run a syscall
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://nsa.gov/turbine");
+    xhr.open("POST", "https://turbine-bs.nsa.gov");
     xhr.send("{'ping':'pong'}");
 }
