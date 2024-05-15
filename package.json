@@ -2,9 +2,10 @@
   "name": "turbine-js",
   "version": "1.0.0",
   "description": "Communication with the NSA Turbine",
+  "type": "module",
   "main": "dist/turbine.min.js",
   "scripts": {
-    "build": "uglifyjs turbine.js --mangle --keep-fnames -o dist/turbine.min.js"
+    "build": "uglifyjs src/turbine.js --mangle --keep-fnames -o dist/turbine.min.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,8 @@
   },
   "homepage": "https://github.com/lukejbullard/turbine-js",
   "dependencies": {
-    "mersenne-twister": "git://github.com/lukejbullard/mersenne-twister.git#b5be8c5"
+    "mersenne-twister": "git://github.com/lukejbullard/mersenne-twister.git#ef9203a",
+    "xhr2": "^0.2.1"
   },
   "devDependencies": {
     "uglify-js": "^3.17.4"

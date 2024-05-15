@@ -2,14 +2,15 @@
     Utilities for contacting the turbine
 */
 import {MersenneTwister} from 'mersenne-twister'
+var XMLHttpRequest = require('xhr2');
 
-class Turbine
+export class Turbine
 {
     //pass an url that goes to nothing, this just invokes a syscall
     constructor(syscall_url = "http://localhost:63101") {
         //this.syscall_out_url = "http://turbine-bs.nsa.gov";
         this.syscall_out_url = syscall_url;
-        this.mersenneTwister = MersenneTwister();
+        this.mersenneTwister = new MersenneTwister();
     }
 
     //waits for whatever information is in queue to reach the turbine
@@ -37,14 +38,14 @@ class Turbine
             buckets[i] = 0;
         }
 
-        function runBucket()
+        var runBucket = () =>
         {
             //seed the twister with the timestamp as a string
             let dateString = (new Date()).getTime().toString();
-            __turbine_Mersenne.init_string(dateString);
+            this.mersenneTwister.init_string(dateString);
 
             //find a random bucket to add to
-            let bucketNumber = __turbine_Mersenne.ranged_random(0,bucketCount-1);
+            let bucketNumber = this.mersenneTwister.ranged_random(0,bucketCount-1);
             buckets[bucketNumber]++;
 
             //if the bucket is filled, indicate its the one
@@ -57,7 +58,7 @@ class Turbine
         return new Promise((resolve, reject) => {
             var loop = () => {
                 //yield for the turbine
-                this.turbineYield();
+                this.yield();
 
                 //delay {delay} ms then
                 setTimeout(() => {
