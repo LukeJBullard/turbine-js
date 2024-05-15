@@ -1,0 +1,29 @@
+{
+  "name": "turbine-js",
+  "version": "1.0.0",
+  "description": "Communication with the NSA Turbine",
+  "main": "dist/turbine.min.js",
+  "scripts": {
+    "build": "uglifyjs turbine.js --mangle --keep-fnames -o dist/turbine.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukejbullard/turbine-js.git"
+  },
+  "keywords": [
+    "nsa",
+    "turbine"
+  ],
+  "author": "Luke Bullard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukejbullard/turbine-js/issues"
+  },
+  "homepage": "https://github.com/lukejbullard/turbine-js",
+  "dependencies": {
+    "mersenne-twister": "git://github.com/lukejbullard/mersenne-twister.git#b5be8c5"
+  },
+  "devDependencies": {
+    "uglify-js": "^3.17.4"
+  }
+}
